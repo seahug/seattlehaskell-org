@@ -1,0 +1,19 @@
+#!/bin/bash
+SCRIPTPATH=$(readlink -f $0)
+SCRIPTDIR=$(dirname $SCRIPTPATH)
+APPDIR=$(dirname $SCRIPTDIR)
+
+cd $APPDIR
+
+#cabal install -j
+#if [ $? -ne 0 ]; then
+#  echo cabal install -j failed
+#  exit 1
+#fi
+
+$APPDIR/.cabal-sandbox/bin/site rebuild
+if [ $? -ne 0 ]; then
+  echo site build failed
+  exit 1
+fi
+
