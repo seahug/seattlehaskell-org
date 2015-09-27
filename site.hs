@@ -42,9 +42,8 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-{-
     match "index.html" $ do
-        route idRoute
+        route $ constRoute "index-old.html"
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
@@ -56,7 +55,6 @@ main = hakyll $ do
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
--}
 
     match "index.php" $ do
         route idRoute
