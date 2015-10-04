@@ -1,0 +1,20 @@
+Default: &defaults
+  database: seattlehaskell.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: seattlehaskell_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: seattlehaskell_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: seattlehaskell_production.sqlite3
+  poolsize: 100
+  <<: *defaults
