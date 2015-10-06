@@ -22,6 +22,7 @@ library
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
+                     Util.MeetupApi
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -81,6 +82,15 @@ library
                  , unordered-containers
                  , containers
                  , vector
+                 , time
+                 , aeson
+                 , bytestring
+                 , ConfigFile
+                 , http-conduit
+                 , MissingH
+                 , old-locale
+                 , text
+                 , text-format
                  , time
 
 executable         seattlehaskell
