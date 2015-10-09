@@ -3,7 +3,6 @@
 module Util.MeetupApi
 (
     Event(..)
-  , EventList(..)
   , Venue(..)
   , formatEvent
   , meetupApiEventsUrl
@@ -22,14 +21,6 @@ import Data.Time.Format as DTF
 import Data.Time.LocalTime
 import Data.Yaml
 import Prelude
-
-data EventList = EventList {
-    eventListEvents :: [Event]
-}
-
-instance FromJSON EventList where
-    parseJSON (Object v) = EventList <$> v .: "results"
-    parseJSON _ = mzero
 
 data Event = Event {
     eventTitle       :: !T.Text

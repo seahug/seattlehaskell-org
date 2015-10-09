@@ -17,10 +17,10 @@ getMeetupEventDescriptions = do
         Just settings -> do
             let url = M.meetupApiEventsUrl settings
             let content = simpleHttp url
-            d <- (eitherDecode <$> content) :: IO (Either String M.EventList)
+            d <- (eitherDecode <$> content) :: IO (Either String [M.Event])
             return $ case d of
                 Left _ -> "(error)"
-                Right es -> case M.eventListEvents es of
+                Right es -> case es of
                     [] -> ""
                     e : _ -> M.formatEvent e
 
