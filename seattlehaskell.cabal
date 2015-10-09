@@ -84,14 +84,16 @@ library
                  , containers
                  , vector
                  , time
+                 , MissingH
                  , aeson
                  , bytestring
+                 , either
                  , http-conduit
-                 , MissingH
                  , old-locale
                  , text
                  , text-format
                  , time
+                 , transformers
 
 executable         seattlehaskell
     if flag(library-only)

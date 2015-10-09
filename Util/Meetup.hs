@@ -14,6 +14,7 @@ import Control.Monad
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy.Internal as LBS
+import Data.Either.Utils
 import qualified Data.Text as T
 import qualified Data.Text.Format as TF
 import qualified Data.Text.Lazy as TL
@@ -86,10 +87,7 @@ fetchEvents settings = do
                 "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" \
                 [settingsApiKey s]
         parseEventListJson :: LBS.ByteString -> [Event]
-        parseEventListJson content =
-            case (A.eitherDecode content) :: Either String EventList of
-                Left _ -> error "FAIL"
-                Right eventList -> eventListEvents eventList
+        parseEventListJson content = eventListEvents $ fromRight ((A.eitherDecode content) :: Either String EventList)
 
 readSettings :: FilePath -> IO (Maybe Settings)
 readSettings fileName = do
