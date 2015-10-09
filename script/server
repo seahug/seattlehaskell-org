@@ -1,0 +1,2 @@
+#!/bin/bash
+APPROOT=http://seattlehaskell.org stack exec -- yesod devel
