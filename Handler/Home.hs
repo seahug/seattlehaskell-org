@@ -1,8 +1,7 @@
 module Handler.Home where
 
 import Import
-import Data.Time.Format as DTF
-import Data.Time.LocalTime
+import qualified Util.Formatting as F
 import qualified Util.MeetupApi as M
 
 -- $TODO: Use monad transformers or something to tidy this up
@@ -16,9 +15,6 @@ getNextMeetupEvent configFileName = do
             return $ case events of
                 [] -> error "FAIL"
                 event : _ -> event
-
-formatZonedTime :: ZonedTime -> String
-formatZonedTime t = formatTime DTF.defaultTimeLocale "%A %-d %B %Y at %H:%M UTC%z" t
 
 getHomeR :: Handler Html
 getHomeR = do

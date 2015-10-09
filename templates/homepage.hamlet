@@ -3,7 +3,7 @@
   This is the future home of the Seattle Area Haskell Users' Group (SeaHUG).
 <p>
   <a href="#{M.eventUrl nextMeetupEvent}">
-    Next event: #{M.eventTitle nextMeetupEvent} at #{formatZonedTime $ M.eventZonedTime nextMeetupEvent}
+    Next event: #{M.eventTitle nextMeetupEvent} at #{F.formatZonedTime $ M.eventZonedTime nextMeetupEvent}
 <p>
   In the meantime, visit our <a href="http://www.meetup.com/SEAHUG/">Meetup.com</a> web site.
 
