@@ -2,27 +2,47 @@
 module Handler.Home where
 
 import Import
-import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3,
-                              withSmallInput)
-
-import Data.Aeson
-import Network.HTTP.Conduit (simpleHttp)
+import Data.Time.Format as DTF
+import Data.Time.LocalTime
+import qualified Data.Text as T
+import qualified Data.Text.Lazy as TL
+import qualified Data.Text.Format as TF
 import qualified Util.MeetupApi as M
+import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3, withSmallInput)
+
+formatEvent :: M.Event -> T.Text
+formatEvent e = TL.toStrict $ TF.format "{} {} {}" [
+        (M.eventTitle e)
+      , (M.eventUrl e)
+      , T.pack (formatZonedTime (M.eventZonedTime e))
+    ]
+
+formatZonedTime :: ZonedTime -> String
+formatZonedTime t = formatTime DTF.defaultTimeLocale "%A %-d %B %Y at %H:%M UTC%z" t
+
+getMeetupEvents' :: FilePath -> IO [M.Event]
+getMeetupEvents' fileName = do
+    result <- M.readMeetupSettings fileName
+    case result of
+        Nothing -> error "FAIL"
+        Just settings -> M.getMeetupEvents settings
+
+getMeetupEvents :: IO [M.Event]
+getMeetupEvents = getMeetupEvents' "config/meetup.yml"
 
 getMeetupEventDescriptions :: IO Text
 getMeetupEventDescriptions = do
-    result <- M.readMeetupSettings "config/meetup.yml"
-    case result of
-        Nothing -> error "FAIL"
-        Just settings -> do
-            let url = M.meetupApiEventsUrl settings
-            let content = simpleHttp url
-            d <- (eitherDecode <$> content) :: IO (Either String [M.Event])
-            return $ case d of
-                Left _ -> "(error)"
-                Right es -> case es of
-                    [] -> ""
-                    e : _ -> M.formatEvent e
+    events <- getMeetupEvents
+    return $ case events of
+        [] -> error "FAIL"
+        event : _ -> formatEvent event
+
+getNextMeetupEvent :: IO M.Event
+getNextMeetupEvent = do
+    events <- getMeetupEvents
+    return $ case events of
+        [] -> error "FAIL"
+        event : _ -> event
 
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
@@ -33,11 +53,12 @@ getMeetupEventDescriptions = do
 -- inclined, or create a single monolithic file.
 getHomeR :: Handler Html
 getHomeR = do
-    (formWidget, formEnctype) <- generateFormPost sampleForm
-    let submission = Nothing :: Maybe (FileInfo, Text)
-        handlerName = "getHomeR" :: Text
+    --(formWidget, formEnctype) <- generateFormPost sampleForm
+    --let submission = Nothing :: Maybe (FileInfo, Text)
+    --    handlerName = "getHomeR" :: Text
 
-    eventDescription <- liftIO getMeetupEventDescriptions
+    nextMeetupEvent <- liftIO getNextMeetupEvent
+
     defaultLayout $ do
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
@@ -45,13 +66,14 @@ getHomeR = do
 
 postHomeR :: Handler Html
 postHomeR = do
-    ((result, formWidget), formEnctype) <- runFormPost sampleForm
-    let handlerName = "postHomeR" :: Text
-        submission = case result of
-            FormSuccess res -> Just res
-            _ -> Nothing
+    --((result, formWidget), formEnctype) <- runFormPost sampleForm
+    --let handlerName = "postHomeR" :: Text
+    --    submission = case result of
+    --        FormSuccess res -> Just res
+    --        _ -> Nothing
 
-    eventDescription <- liftIO getMeetupEventDescriptions
+    nextMeetupEvent <- liftIO getNextMeetupEvent
+
     defaultLayout $ do
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
