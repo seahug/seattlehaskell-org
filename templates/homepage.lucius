@@ -18,3 +18,11 @@ footer {
 .input-sm {
     margin-left: 20px
 }
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
