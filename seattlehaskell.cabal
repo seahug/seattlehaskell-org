@@ -23,7 +23,7 @@ library
                      Handler.Common
                      Handler.Home
                      Util.Formatting
-                     Util.MeetupApi
+                     Util.Meetup
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

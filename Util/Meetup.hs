@@ -1,12 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Util.MeetupApi
+module Util.Meetup
 (
     Event (..)
-  , MeetupSettings (..)
+  , Settings (..)
   , Venue (..)
-  , getMeetupEvents
-  , readMeetupSettings
+  , fetchEvents
+  , readSettings
 ) where
 
 import Control.Applicative
@@ -23,9 +23,7 @@ import Data.Yaml
 import qualified Network.HTTP.Conduit as C
 import Prelude
 
-data EventList = EventList {
-    eventListEvents :: [Event]
-}
+data EventList = EventList { eventListEvents :: [Event] }
 
 instance FromJSON EventList where
     parseJSON (Object v) = EventList <$> v .: "results"
@@ -71,34 +69,30 @@ instance FromJSON Venue where
               <*> v .: "state"
     parseJSON _ = mzero
 
-data MeetupSettings = MeetupSettings {
-    meetupSettingsApiKey :: !T.Text
-}
+data Settings = Settings { settingsApiKey :: !T.Text }
 
-instance FromJSON MeetupSettings where
-    parseJSON (Object v) =
-        MeetupSettings <$> v .: "api_key"
+instance FromJSON Settings where
+    parseJSON (Object v) = Settings <$> v .: "api_key"
     parseJSON _ = mzero
 
-getMeetupEvents :: MeetupSettings -> IO [Event]
-getMeetupEvents settings = do
-    content <- C.simpleHttp $ meetupEventsUrl settings
+fetchEvents :: Settings -> IO [Event]
+fetchEvents settings = do
+    content <- C.simpleHttp $ formatEventsUrl settings
     return $ parseEventListJson content
+    where
+        formatEventsUrl :: Settings -> String
+        formatEventsUrl s =
+            TL.unpack $ TF.format \
+                "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" \
+                [settingsApiKey s]
+        parseEventListJson :: LBS.ByteString -> [Event]
+        parseEventListJson content =
+            case (A.eitherDecode content) :: Either String EventList of
+                Left _ -> error "FAIL"
+                Right eventList -> eventListEvents eventList
 
-meetupEventsUrl :: MeetupSettings -> String
-meetupEventsUrl settings =
-    TL.unpack $ TF.format \
-        "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" \
-        [meetupSettingsApiKey settings]
-
-parseEventListJson :: LBS.ByteString -> [Event]
-parseEventListJson content =
-    case (A.eitherDecode content) :: Either String EventList of
-        Left _ -> error "FAIL"
-        Right eventList -> eventListEvents eventList
-
-readMeetupSettings :: FilePath -> IO (Maybe MeetupSettings)
-readMeetupSettings fileName = do
+readSettings :: FilePath -> IO (Maybe Settings)
+readSettings fileName = do
     value <- BS.readFile fileName
-    return (decode value :: Maybe MeetupSettings)
+    return (decode value :: Maybe Settings)
 
