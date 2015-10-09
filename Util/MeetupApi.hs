@@ -5,17 +5,15 @@ module Util.MeetupApi where
 import Control.Applicative
 import Control.Monad
 import Data.Aeson
-import Data.ConfigFile
-import Data.Either.Utils
+import qualified Data.ByteString.Char8 as BS
 import qualified Data.Text as T
 import qualified Data.Text.Format as TF
 import qualified Data.Text.Lazy as TL
 import Data.Time.Clock.POSIX
 import Data.Time.Format as DTF
 import Data.Time.LocalTime
---import qualified Data.ByteString.Lazy as B
+import Data.Yaml
 import Prelude
---import System.Locale
 
 data EventList = EventList {
     eventListEvents :: [Event]
@@ -76,14 +74,21 @@ formatEvent e = TL.toStrict $ TF.format "{} {} {}" [
       , T.pack (formatZonedTime (eventZonedTime e))
     ]
 
-meetupApiEventsUrl :: String -> String
-meetupApiEventsUrl apiKey =
-    TL.unpack $ TF.format "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" [TL.pack apiKey]
+data MeetupSettings = MeetupSettings {
+    meetupSettingsApiKey :: !T.Text
+} deriving Show
 
-meetupApiKey :: String -> IO String
-meetupApiKey configFileName = do
-    val <- readfile emptyCP configFileName
-    let cp = forceEither val
-    let apiKey = forceEither $ get cp "" "api_key"
-    return apiKey
+instance FromJSON MeetupSettings where
+    parseJSON (Object v) =
+        MeetupSettings <$> v .: "api_key"
+    parseJSON _ = mzero
+
+readMeetupSettings :: FilePath -> IO (Maybe MeetupSettings)
+readMeetupSettings fileName = do
+    value <- BS.readFile fileName
+    return (Data.Yaml.decode value :: Maybe MeetupSettings)
+
+meetupApiEventsUrl :: MeetupSettings -> String
+meetupApiEventsUrl settings =
+    TL.unpack $ TF.format "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" [meetupSettingsApiKey settings]
 

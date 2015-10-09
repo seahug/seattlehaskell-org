@@ -11,15 +11,18 @@ import qualified Util.MeetupApi as M
 
 getMeetupEventDescriptions :: IO Text
 getMeetupEventDescriptions = do
-    apiKey <- M.meetupApiKey "config/meetup.conf"
-    let url = M.meetupApiEventsUrl apiKey
-    let content = simpleHttp url
-    d <- (eitherDecode <$> content) :: IO (Either String M.EventList)
-    return $ case d of
-        Left _ -> "(error)"
-        Right es -> case M.eventListEvents es of
-            [] -> ""
-            e : _ -> M.formatEvent e
+    result <- M.readMeetupSettings "config/meetup.yml"
+    case result of
+        Nothing -> error "FAIL"
+        Just settings -> do
+            let url = M.meetupApiEventsUrl settings
+            let content = simpleHttp url
+            d <- (eitherDecode <$> content) :: IO (Either String M.EventList)
+            return $ case d of
+                Left _ -> "(error)"
+                Right es -> case M.eventListEvents es of
+                    [] -> ""
+                    e : _ -> M.formatEvent e
 
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in

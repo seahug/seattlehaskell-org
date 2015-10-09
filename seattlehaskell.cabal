@@ -85,7 +85,6 @@ library
                  , time
                  , aeson
                  , bytestring
-                 , ConfigFile
                  , http-conduit
                  , MissingH
                  , old-locale
