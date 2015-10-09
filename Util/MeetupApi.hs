@@ -1,6 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Util.MeetupApi where
+module Util.MeetupApi
+(
+    Event(..)
+  , EventList(..)
+  , Venue(..)
+  , formatEvent
+  , meetupApiEventsUrl
+  , readMeetupSettings
+) where
 
 import Control.Applicative
 import Control.Monad
