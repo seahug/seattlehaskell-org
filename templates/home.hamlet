@@ -3,5 +3,5 @@
   This is the home of Seattle Area Haskell Users' Group.
 <p>
   <a href="#{M.eventUrl event}">
-    Our next event: #{M.eventTitle event} at #{F.formatZonedTime $ M.eventZonedTime event}
+    Our next event: #{M.eventTitle event} #{F.formatZonedTimeVerbose $ M.eventZonedTime event}
 
