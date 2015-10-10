@@ -14,5 +14,6 @@ getHomeR = do
         return $ Prelude.head events
     defaultLayout $ do
         aDomId <- newIdent
+        setTitle "SeaHUG"
         $(widgetFile "homepage")
 
