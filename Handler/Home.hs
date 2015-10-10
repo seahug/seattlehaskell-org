@@ -13,21 +13,18 @@ getHomeR = do
         events <- M.fetchEvents $ fromJust settings
         return $ Prelude.head events
     defaultLayout $ do
-        aDomId <- newIdent
         setTitle "SeaHUG"
-        $(widgetFile "homepage")
+        $(widgetFile "home")
 
 getAboutR :: Handler Html
 getAboutR = do
     defaultLayout $ do
-        aDomId <- newIdent
         setTitle "SeaHUG - about"
         $(widgetFile "about")
 
 getContactR :: Handler Html
 getContactR = do
     defaultLayout $ do
-        aDomId <- newIdent
         setTitle "SeaHUG - contact"
         $(widgetFile "contact")
 
