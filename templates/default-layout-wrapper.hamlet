@@ -34,9 +34,9 @@ $newline never
           <a class="navbar-brand" href="#">SeaHUG</a>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href=@{HomeR}>Home</a></li>
-            <li><a href=@{AboutR}>About</a></li>
-            <li><a href=@{ContactR}>Contact</a></li>
+            <li :Just (HomeR) == currentRoute:.active><a href="@{HomeR}">Home</a></li>
+            <li :Just (AboutR) == currentRoute:.active><a href="@{AboutR}">About</a></li>
+            <li :Just (ContactR) == currentRoute:.active><a href="@{ContactR}">Contact</a></li>
 
     <div class="container">
       <header>
