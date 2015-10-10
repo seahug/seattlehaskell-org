@@ -17,3 +17,17 @@ getHomeR = do
         setTitle "SeaHUG"
         $(widgetFile "homepage")
 
+getAboutR :: Handler Html
+getAboutR = do
+    defaultLayout $ do
+        aDomId <- newIdent
+        setTitle "SeaHUG - about"
+        $(widgetFile "about")
+
+getContactR :: Handler Html
+getContactR = do
+    defaultLayout $ do
+        aDomId <- newIdent
+        setTitle "SeaHUG - contact"
+        $(widgetFile "contact")
+
