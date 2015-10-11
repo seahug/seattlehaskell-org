@@ -31,7 +31,7 @@ $newline never
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          <a class="navbar-brand" href="#">SeaHUG</a>
+          <a class="navbar-brand haskell-logo" href="#">&#57344; SeaHUG</a>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li :Just (HomeR) == currentRoute:.active><a href="@{HomeR}">Home</a></li>
