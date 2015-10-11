@@ -23,3 +23,8 @@ database:
 
 copyright: Seattle Area Haskell Users' Group
 #analytics: UA-YOURCODE
+
+# Do not store secrets directly in this file
+# Instead, store only empty "_env"-formatted values
+meetup-api-key: "_env:MEETUP_API_KEY:"
+

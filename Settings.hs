@@ -52,6 +52,8 @@ data AppSettings = AppSettings
     -- ^ Copyright text to appear in the footer of the page
     , appAnalytics              :: Maybe Text
     -- ^ Google Analytics code
+    , appMeetupApiKey           :: String
+    -- ^ Meetup API key
     }
 
 instance FromJSON AppSettings where
@@ -77,6 +79,8 @@ instance FromJSON AppSettings where
 
         appCopyright              <- o .: "copyright"
         appAnalytics              <- o .:? "analytics"
+
+        appMeetupApiKey           <- o .: "meetup-api-key"
 
         return AppSettings {..}
 

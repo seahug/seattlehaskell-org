@@ -1,6 +1,5 @@
 module Handler.Home where
 
-import Data.Maybe
 import Import
 import qualified Prelude
 import qualified Util.Formatting as F
@@ -8,9 +7,10 @@ import qualified Util.Meetup as M
 
 getHomeR :: Handler Html
 getHomeR = do
+    app <- getYesod
+    let meetupApiKey = appMeetupApiKey $ appSettings app
     event <- liftIO $ do
-        settings <- M.readSettings "config/meetup.yml"
-        events <- M.fetchEvents $ fromJust settings
+        events <- M.fetchEvents meetupApiKey
         return $ Prelude.head events
     defaultLayout $ do
         setTitle "SeaHUG"

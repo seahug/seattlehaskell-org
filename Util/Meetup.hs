@@ -3,16 +3,13 @@
 module Util.Meetup
 (
     Event (..)
-  , Settings (..)
   , Venue (..)
   , fetchEvents
-  , readSettings
 ) where
 
 import Control.Applicative
 import Control.Monad
 import qualified Data.Aeson as A
-import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy.Internal as LBS
 import Data.Either.Utils
 import qualified Data.Text as T
@@ -70,27 +67,16 @@ instance FromJSON Venue where
               <*> v .: "state"
     parseJSON _ = mzero
 
-data Settings = Settings { settingsApiKey :: !T.Text }
-
-instance FromJSON Settings where
-    parseJSON (Object v) = Settings <$> v .: "api_key"
-    parseJSON _ = mzero
-
-fetchEvents :: Settings -> IO [Event]
-fetchEvents settings = do
-    content <- C.simpleHttp $ formatEventsUrl settings
+fetchEvents :: String -> IO [Event]
+fetchEvents meetupApiKey = do
+    content <- C.simpleHttp $ formatEventsUrl meetupApiKey
     return $ parseEventListJson content
     where
-        formatEventsUrl :: Settings -> String
-        formatEventsUrl s =
+        formatEventsUrl :: String -> String
+        formatEventsUrl k =
             TL.unpack $ TF.format \
                 "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" \
-                [settingsApiKey s]
+                [TL.pack k]
         parseEventListJson :: LBS.ByteString -> [Event]
         parseEventListJson content = eventListEvents $ fromRight ((A.eitherDecode content) :: Either String EventList)
-
-readSettings :: FilePath -> IO (Maybe Settings)
-readSettings fileName = do
-    value <- BS.readFile fileName
-    return (decode value :: Maybe Settings)
 
