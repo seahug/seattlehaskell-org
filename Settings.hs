@@ -56,6 +56,8 @@ data AppSettings = AppSettings
     -- ^ Google Analytics code
     , appMeetupApiKey           :: String
     -- ^ Meetup API key
+    , appGitHubUrl              :: String
+    -- ^ GitHub URL
     }
 
 instance FromJSON AppSettings where
@@ -84,6 +86,7 @@ instance FromJSON AppSettings where
         appAnalytics              <- o .:? "analytics"
 
         appMeetupApiKey           <- o .: "meetup-api-key"
+        appGitHubUrl              <- o .: "github-url"
 
         return AppSettings {..}
 

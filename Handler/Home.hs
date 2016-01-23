@@ -18,6 +18,8 @@ getHomeR = do
 
 getAboutR :: Handler Html
 getAboutR = do
+    app <- getYesod
+    let gitHubUrl = appGitHubUrl $ appSettings app
     defaultLayout $ do
         setTitle "SeaHUG - about"
         $(widgetFile "about")

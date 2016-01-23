@@ -29,3 +29,5 @@ copyright: Seattle Area Haskell Users' Group
 # Instead, store only empty "_env"-formatted values
 meetup-api-key: "_env:MEETUP_API_KEY:"
 
+github-url: https://github.com/seahug/seattlehaskell-org
+
