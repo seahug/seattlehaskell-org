@@ -21,6 +21,7 @@ database:
   database: "_env:SQLITE_DATABASE:seattlehaskell.sqlite3"
   poolsize: "_env:SQLITE_POOLSIZE:10"
 
+copyright-year: 2016
 copyright: Seattle Area Haskell Users' Group
 #analytics: UA-YOURCODE
 
