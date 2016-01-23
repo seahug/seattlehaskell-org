@@ -6,6 +6,5 @@
 
 / HomeR GET
 /about AboutR GET
-/contact ContactR GET
 /pcph PcphR GET
 

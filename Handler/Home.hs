@@ -19,16 +19,12 @@ getHomeR = do
 getAboutR :: Handler Html
 getAboutR = do
   app <- getYesod
-  let gitHubUrl = appGitHubUrl $ appSettings app
+  let
+    gitHubUrl = appGitHubUrl $ appSettings app
+    meetupUrl = appMeetupUrl $ appSettings app
   defaultLayout $ do
     setTitle "SeaHUG - about"
     $(widgetFile "about")
-
-getContactR :: Handler Html
-getContactR =
-  defaultLayout $ do
-    setTitle "SeaHUG - contact"
-    $(widgetFile "contact")
 
 getPcphR :: Handler Html
 getPcphR =

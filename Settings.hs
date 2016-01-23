@@ -58,6 +58,8 @@ data AppSettings = AppSettings
     -- ^ Meetup API key
     , appGitHubUrl              :: String
     -- ^ GitHub URL
+    , appMeetupUrl              :: String
+    -- ^ Meetup URL
     }
 
 instance FromJSON AppSettings where
@@ -87,6 +89,7 @@ instance FromJSON AppSettings where
 
         appMeetupApiKey           <- o .: "meetup-api-key"
         appGitHubUrl              <- o .: "github-url"
+        appMeetupUrl              <- o .: "meetup-url"
 
         return AppSettings {..}
 
