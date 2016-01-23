@@ -1,9 +1,11 @@
 # SeaHUG web site
 
 This is the source code for the web site of the [Seattle Area Haskell Users'
-Group](http://seattlehaskell.org/) web site.
+Group][1].
 
 # Licence
 
-Licensed under MIT License
+Released under MIT License
+
+[1]: http://seattlehaskell.org/
 
