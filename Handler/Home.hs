@@ -25,13 +25,13 @@ getAboutR = do
     $(widgetFile "about")
 
 getContactR :: Handler Html
-getContactR = do
+getContactR =
   defaultLayout $ do
     setTitle "SeaHUG - contact"
     $(widgetFile "contact")
 
 getPcphR :: Handler Html
-getPcphR = do
+getPcphR =
   defaultLayout $ do
     setTitle "SeaHUG - Parallel and concurrent programming in Haskell"
     $(widgetFile "pcph")
