@@ -1,0 +1,19 @@
+<h1>Parallel and concurrent programming in Haskell
+<p>
+  This experimental lab-style course is intended to provide an engineering-based
+  introduction to Haskell with an emphasis on producing real programs that employ
+  parallelism and concurrency. The ten-session course will provide students with
+  just enough theoretical background in the language to write practical programs.
+  It will be suitable for people who are new to Haskell, but some experience or
+  background in programming in other languages will be assumed. Students will be
+  expected to bring their own laptops with a recent version of the Haskell
+  Platform or equivalent installed.
+<p>
+  The course starts Wednesday March 16th 2016.
+<p>
+  <a href="https://seahug-pcph.eventbrite.com/">
+    Register at Eventbrite
+<p>
+  <a href="https://github.com/seahug/pcph">
+    View course materials on GitHub including setup instructions
+

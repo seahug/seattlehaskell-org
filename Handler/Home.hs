@@ -28,3 +28,9 @@ getContactR = do
         setTitle "SeaHUG - contact"
         $(widgetFile "contact")
 
+getPcphR :: Handler Html
+getPcphR = do
+    defaultLayout $ do
+        setTitle "SeaHUG - Parallel and concurrent programming in Haskell"
+        $(widgetFile "pcph")
+

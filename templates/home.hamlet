@@ -3,5 +3,11 @@
   This is the home of Seattle Area Haskell Users' Group.
 <p>
   <a href="#{M.eventUrl event}">
-    Our next event: #{M.eventTitle event} #{F.formatZonedTimeVerbose $ M.eventZonedTime event}
+    Our next meeting: #{M.eventTitle event} #{F.formatZonedTimeVerbose $ M.eventZonedTime event}
+<p>
+  <a href="https://seahug-pcph.eventbrite.com/">
+    Register for "Parallel and concurrent programming in Haskell" course
+<p>
+  <a href="@{PcphR}">
+    Information for "Parallel and concurrent programming in Haskell" course
 
