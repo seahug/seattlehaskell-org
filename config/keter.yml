@@ -1,11 +1,13 @@
 stanzas:
   - type: webapp
+    forward-env:
+      - MEETUP_API_KEY
     exec: ../dist/bin/seattlehaskell
     hosts:
-      - www.seattlehaskell.com
+      - seattlehaskell.org
     requires-secure: false
   - type: redirect
     hosts:
-      - seattlehaskell.com
+      - www.seattlehaskell.org
     actions:
-      - host: www.seattlehaskell.com
+      - host: seattlehaskell.org
