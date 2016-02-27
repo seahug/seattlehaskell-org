@@ -1,4 +1,10 @@
-<h1>Parallel and concurrent programming in Haskell
+<header>
+  <h1>
+    Parallel and concurrent programming in Haskell
+  <p>
+    Instructor:
+    <a href="http://bartoszmilewski.com/">
+      Bartosz Milewski
 <p>
   This experimental lab-style course is intended to provide an engineering-based
   introduction to Haskell with an emphasis on producing real programs that employ
@@ -8,12 +14,40 @@
   background in programming in other languages will be assumed. Students will be
   expected to bring their own laptops with a recent version of the Haskell
   Platform or equivalent installed.
-<p>
-  The course starts Wednesday March 16th 2016.
-<p>
-  <a href="https://seahug-pcph.eventbrite.com/">
-    Register at Eventbrite
-<p>
-  <a href="https://github.com/seahug/pcph">
-    View course materials on GitHub including setup instructions
-
+<ul .list-group>
+  <li .list-group-item>
+    The course starts Wednesday April 6th 2016 and will consist of up to ten
+    sessions<br/>
+    <button data-toggle="collapse" data-target="#sessions">
+      Show/hide all dates
+    <div #sessions .collapse>
+      <ul .list-unstyled>
+        <li>
+          Wednesday April 6th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday April 13th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday April 20th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday April 27th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday May 4th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday May 11th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday May 18th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday May 25th 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday June 1st 2016, 6:30pm-9:00pm
+        <li>
+          Wednesday June 8th 2016, 6:30pm-9:00pm
+  <li .list-group-item>
+    <a href="https://seahug-pcph.eventbrite.com/">
+      Register at Eventbrite
+  <li .list-group-item>
+    <a href=@{StaticR other_pcph_ics}>
+      Download iCalendar file
+  <li .list-group-item>
+    <a href="https://github.com/seahug/pcph">
+      View course materials on GitHub including setup instructions

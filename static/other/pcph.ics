@@ -1,0 +1,175 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//www.marudot.com//iCal Event Maker
+X-WR-CALNAME:pcph
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+TZURL:http://tzurl.org/zoneinfo-outlook/America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-608314141@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160406T183000
+DTEND;TZID="America/Los_Angeles":20160406T210000
+SUMMARY:Parallel and concurrent programming in Haskell (1/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (1/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-464956844@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160413T183000
+DTEND;TZID="America/Los_Angeles":20160413T210000
+SUMMARY:Parallel and concurrent programming in Haskell (2/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (2/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-1223910254@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160420T183000
+DTEND;TZID="America/Los_Angeles":20160420T210000
+SUMMARY:Parallel and concurrent programming in Haskell (3/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (3/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-1653279491@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160427T183000
+DTEND;TZID="America/Los_Angeles":20160427T210000
+SUMMARY:Parallel and concurrent programming in Haskell (4/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (4/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-1751794185@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160504T183000
+DTEND;TZID="America/Los_Angeles":20160504T210000
+SUMMARY:Parallel and concurrent programming in Haskell (5/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (5/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-943109730@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160511T183000
+DTEND;TZID="America/Los_Angeles":20160511T210000
+SUMMARY:Parallel and concurrent programming in Haskell (6/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (6/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-275099107@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160518T183000
+DTEND;TZID="America/Los_Angeles":20160518T210000
+SUMMARY:Parallel and concurrent programming in Haskell (7/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (7/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-1661556885@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160525T183000
+DTEND;TZID="America/Los_Angeles":20160525T210000
+SUMMARY:Parallel and concurrent programming in Haskell (8/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (8/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-483014993@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160601T183000
+DTEND;TZID="America/Los_Angeles":20160601T210000
+SUMMARY:Parallel and concurrent programming in Haskell (9/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (9/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20160227T191229Z
+UID:20160227T191229Z-1751277815@marudot.com
+DTSTART;TZID="America/Los_Angeles":20160608T183000
+DTEND;TZID="America/Los_Angeles":20160608T210000
+SUMMARY:Parallel and concurrent programming in Haskell (10/10)
+URL:http%3A%2F%2Fseattlehaskell.org%2Fpcph
+DESCRIPTION:Parallel and concurrent programming in Haskell with Bartosz Milewski
+LOCATION:Facebook\, 1730 Minor Avenue\, Seattle\, WA 98101
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Parallel and concurrent programming in Haskell (10/10)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
