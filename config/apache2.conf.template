@@ -1,0 +1,30 @@
+<VirtualHost *>
+  ServerName $DOMAIN
+  ServerAlias www.$DOMAIN
+  ServerAdmin admin@$DOMAIN
+  ProxyPreserveHost On
+  ProxyPass /content !
+  ProxyPass / http://0.0.0.0:$PORT/
+  ProxyPassReverse / http://0.0.0.0:$PORT/
+
+  Alias /content $DOCROOT/
+  <Directory $DOCROOT/>
+    Require all granted
+    DirectoryIndex index.html
+
+    RewriteEngine on
+    RewriteBase /content/
+
+    # Rewrite rules described here:
+    # http://stackoverflow.com/questions/1992183/how-to-hide-the-html-extension-with-apache-mod-rewrite
+
+    # Rewrite URLs without .html extension
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html
+
+    # Redirect URLs with .html extension
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\ (/[^\ ]*)\.html[?\ ]
+    RewriteRule (.*)\.html$ /content/$1 [R=307,L]
+  </Directory>
+</VirtualHost>

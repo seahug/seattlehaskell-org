@@ -1,8 +1,10 @@
 *~
 devel
 dist*
+genconf
 static/tmp/
 static/combined/
+config/apache2.conf
 config/client_session_key.aes
 *.hi
 *.o

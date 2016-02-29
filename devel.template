@@ -1,0 +1,8 @@
+#!/bin/bash
+SCRIPTPATH=$(readlink -f $0)
+SCRIPTDIR=$(dirname $SCRIPTPATH)
+APPDIR=$SCRIPTDIR
+
+APPROOT=http://DOMAIN \
+  MEETUP_API_KEY=MEETUP_API_KEY \
+  $APPDIR/script/devel

@@ -1,0 +1,30 @@
+#!/bin/bash
+SCRIPTPATH=$(readlink -f $0)
+SCRIPTDIR=$(dirname $SCRIPTPATH)
+APPDIR=$(dirname $SCRIPTDIR)
+
+if [[ "$1" == "" ]]; then
+  echo Specify domain
+  exit 1
+fi
+DOMAIN=$1
+shift
+
+if [[ "$1" == "" ]]; then
+  echo Specify port
+  exit 1
+fi
+PORT=$1
+shift
+
+if [[ "$1" == "" ]]; then
+  echo Specify document root
+  exit 1
+fi
+DOCROOT=$(readlink -f $1)
+shift
+
+cat config/apache2.conf.template | \
+  sed -e "s/\$DOMAIN/$DOMAIN/g" \
+    -e "s/\$PORT/$PORT/g" \
+    -e "s#\$DOCROOT#$DOCROOT#g"
