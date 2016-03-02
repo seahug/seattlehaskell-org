@@ -23,6 +23,20 @@ $ script/devel
 $ script/keter
 ```
 
+## Helper scripts
+
+Templates for helper scripts to run a local development server and to generate
+an Apache2 configuration file, `devel.template` and `genconf.template`
+respectively, are provided. For example, to generate a local Apache2
+configuration file:
+
+```bash
+$ cp devel.template devel
+$ chmod +x devel
+$ # Edit devel script
+$ ./devel
+```
+
 # Licence
 
 Released under MIT License
