@@ -1,4 +1,4 @@
-<h1 class="haskell-logo">&#57344; SeaHUG</tt>
+<h1 class="haskell-logo">&#57344; SeaHUG
 <p>
   <a href="#{M.eventUrl event}">
     Our next meeting: #{M.eventTitle event} #{F.formatZonedTimeVerbose $ M.eventZonedTime event}
