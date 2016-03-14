@@ -1,7 +1,20 @@
-name:              seattlehaskell
-version:           0.0.0
-cabal-version:     >= 1.8
-build-type:        Simple
+name:               seattlehaskell
+version:            0.0.0
+synopsis:           Dynamic content for seattlehaskell.org
+description:        Please see README.md
+homepage:           https://github.com/seahug/seattlehaskell-org
+license:            MIT
+license-file:       LICENSE
+author:             Richard Cook
+maintainer:         rcook@rcook.org
+copyright:          2016 Richad Cook
+category:           Web
+build-type:         Simple
+cabal-version:      >= 1.8
+
+source-repository head
+  type:             git
+  location:         https://github.com/seahug/seattlehaskell-org.git
 
 Flag dev
     Description:   Turn on development settings, like auto-reload templates.
