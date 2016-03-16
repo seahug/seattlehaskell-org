@@ -1,7 +1,7 @@
 # SeaHUG web site
 
 This is the source code for the web site of the [Seattle Area Haskell Users'
-Group][1].
+Group][seahug].
 
 # Building and deploying
 
@@ -41,5 +41,5 @@ $ ./devel
 
 Released under MIT License
 
-[1]: http://seattlehaskell.org/
+[seahug]: http://seattlehaskell.org/
 
