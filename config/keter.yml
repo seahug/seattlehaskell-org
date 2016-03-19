@@ -2,7 +2,7 @@ stanzas:
   - type: webapp
     forward-env:
       - MEETUP_API_KEY
-    exec: ../dist/bin/seattlehaskell
+    exec: ../dist/bin/seattlehaskell-org
     hosts:
       - seattlehaskell.org
     requires-secure: false

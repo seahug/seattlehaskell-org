@@ -12,7 +12,7 @@ extra-deps: []
 
 # Override default flag values for local packages and extra-deps
 flags:
-  seattlehaskell:
+  seattlehaskell-org:
     library-only: false
     dev: false
 
