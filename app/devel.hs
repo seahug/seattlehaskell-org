@@ -1,5 +1,5 @@
 {-# LANGUAGE PackageImports #-}
-import "seattlehaskell" Application (develMain)
+import "seattlehaskell-org" Application (develMain)
 import Prelude (IO)
 
 main :: IO ()
