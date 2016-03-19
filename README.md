@@ -1,29 +1,31 @@
-# SeaHUG web site
+# `seattlehaskell.org` web site
 
-This is the source code for the web site of the [Seattle Area Haskell Users'
-Group][seahug].
+This is the [Yesod][yesod] source code for [seattlehaskell.org][seahug].
 
-# Building and deploying
+Source code for the Hakyll portion of the web site is [also
+available][seahug-hakyll].
 
-## Build
+## Building and deploying
+
+### Build
 
 ```bash
 $ script/build
 ```
 
-## Run development server
+### Run development server
 
 ```bash
 $ script/devel
 ```
 
-## Create Keter bundle
+### Create Keter bundle
 
 ```bash
 $ script/keter
 ```
 
-## Helper scripts
+### Helper scripts
 
 Templates for helper scripts to run a local development server and to generate
 an Apache2 configuration file, `devel.template` and `genconf.template`
@@ -37,9 +39,10 @@ $ # Edit devel script
 $ ./devel
 ```
 
-# Licence
+## Licence
 
 Released under MIT License
 
 [seahug]: http://seattlehaskell.org/
-
+[seahug-hakyll]: https://github.com/seahug/seattlehaskell-org-static
+[yesod]: http://www.yesodweb.com/
