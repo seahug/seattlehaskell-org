@@ -7,4 +7,6 @@
 <p>
   <a href="#{gitHubUrl}">
     Source code on GitHub
-
+<p>
+  Web site is built with <a href="http://www.yesodweb.com/">Yesod</a> and
+  <a href="https://jaspervdj.be/hakyll/">Hakyll</a>.
