@@ -25,10 +25,3 @@ getAboutR = do
   defaultLayout $ do
     setTitle "SeaHUG - about"
     $(widgetFile "about")
-
-getPcphR :: Handler Html
-getPcphR =
-  defaultLayout $ do
-    setTitle "SeaHUG - Parallel and concurrent programming in Haskell"
-    $(widgetFile "pcph")
-
