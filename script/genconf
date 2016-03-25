@@ -3,7 +3,7 @@ SCRIPTPATH=$(readlink -f $0)
 SCRIPTDIR=$(dirname $SCRIPTPATH)
 APPDIR=$(dirname $SCRIPTDIR)
 
-if [[ "$1" == "" ]]; then
+if [[ ! "$1" =~ ^([A-Za-z]+)(\.[A-Za-z]+)*$ ]]; then
   echo Specify domain
   exit 1
 fi
