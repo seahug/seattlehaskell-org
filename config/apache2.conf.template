@@ -4,8 +4,8 @@
   ServerAdmin admin@$DOMAIN
   ProxyPreserveHost On
   ProxyPass /content !
-  ProxyPass / http://0.0.0.0:$PORT/
-  ProxyPassReverse / http://0.0.0.0:$PORT/
+  ProxyPass / http://0.0.0.0:$PROXYPORT/
+  ProxyPassReverse / http://0.0.0.0:$PROXYPORT/
 
   Alias /content $DOCROOT/
   <Directory $DOCROOT/>

@@ -11,10 +11,10 @@ DOMAIN=$1
 shift
 
 if [[ "$1" == "" ]]; then
-  echo Specify port
+  echo Specify proxy port
   exit 1
 fi
-PORT=$1
+PROXYPORT=$1
 shift
 
 if [[ "$1" == "" ]]; then
@@ -26,5 +26,5 @@ shift
 
 cat config/apache2.conf.template | \
   sed -e "s/\$DOMAIN/$DOMAIN/g" \
-    -e "s/\$PORT/$PORT/g" \
+    -e "s/\$PROXYPORT/$PROXYPORT/g" \
     -e "s#\$DOCROOT#$DOCROOT#g"

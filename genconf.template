@@ -5,5 +5,5 @@ APPDIR=$SCRIPTDIR
 
 $APPDIR/script/genconf \
   DOMAIN \
-  PORT \
+  PROXYPORT \
   DOCROOT > $APPDIR/config/apache2.conf
