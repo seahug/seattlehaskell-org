@@ -1,7 +1,11 @@
 <h1 .haskell-logo>&#57344; SeaHUG
 <p>
-  <a href="#{M.eventUrl event}">
-    Our next meeting: #{M.eventTitle event} #{F.formatZonedTimeVerbose $ M.eventZonedTime event}
+  $maybe e <- event
+    <a href="#{M.eventUrl e}">
+      Our next meeting: #{M.eventTitle e} #{F.formatZonedTimeVerbose $ M.eventZonedTime e}
+  $nothing
+    <a href="#{meetupUrl}">
+      Please visit Meetup.com for details for upcoming meetings
 <p>
   <a href="https://seahug-pcph.eventbrite.com/">
     Register for "Parallel and concurrent programming in Haskell" course

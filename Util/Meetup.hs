@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Util.Meetup
 (
@@ -8,10 +9,10 @@ module Util.Meetup
 ) where
 
 import Control.Applicative
+import qualified Control.Exception as E
 import Control.Monad
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy.Internal as LBS
-import Data.Either.Utils
 import qualified Data.Text as T
 import qualified Data.Text.Format as TF
 import qualified Data.Text.Lazy as TL
@@ -67,16 +68,17 @@ instance FromJSON Venue where
               <*> v .: "state"
     parseJSON _ = mzero
 
-fetchEvents :: String -> IO [Event]
+fetchEvents :: String -> IO (Maybe [Event])
 fetchEvents meetupApiKey = do
-    content <- C.simpleHttp $ formatEventsUrl meetupApiKey
-    return $ parseEventListJson content
+    maybeResponse <- fetch $ formatEventsUrl meetupApiKey
+    return $ maybeResponse >>= parseEventListJson
     where
         formatEventsUrl :: String -> String
         formatEventsUrl k =
             TL.unpack $ TF.format
                 "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}"
                 [TL.pack k]
-        parseEventListJson :: LBS.ByteString -> [Event]
-        parseEventListJson content = eventListEvents $ fromRight ((A.eitherDecode content) :: Either String EventList)
-
+        fetch :: String -> IO (Maybe LBS.ByteString)
+        fetch url = fmap Just (C.simpleHttp url) `E.catch` (\(_ :: C.HttpException) -> return Nothing)
+        parseEventListJson :: LBS.ByteString -> Maybe [Event]
+        parseEventListJson = fmap eventListEvents . A.decode
