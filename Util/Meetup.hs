@@ -74,8 +74,8 @@ fetchEvents meetupApiKey = do
     where
         formatEventsUrl :: String -> String
         formatEventsUrl k =
-            TL.unpack $ TF.format \
-                "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}" \
+            TL.unpack $ TF.format
+                "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}"
                 [TL.pack k]
         parseEventListJson :: LBS.ByteString -> [Event]
         parseEventListJson content = eventListEvents $ fromRight ((A.eitherDecode content) :: Either String EventList)
