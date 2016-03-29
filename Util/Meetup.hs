@@ -2,25 +2,24 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Util.Meetup
-(
-    Event (..)
-  , Venue (..)
-  , fetchEvents
-) where
+    ( Event (..)
+    , Venue (..)
+    , fetchEvents
+    ) where
 
-import Control.Applicative
+import           Control.Applicative
 import qualified Control.Exception as E
-import Control.Monad
+import           Control.Monad
 import qualified Data.Aeson as A
-import qualified Data.ByteString.Lazy.Internal as LBS
+import qualified Data.ByteString.Lazy.Char8 as BSL
 import qualified Data.Text as T
 import qualified Data.Text.Format as TF
 import qualified Data.Text.Lazy as TL
-import Data.Time.Clock.POSIX
-import Data.Time.LocalTime
-import Data.Yaml
+import           Data.Time.Clock.POSIX
+import           Data.Time.LocalTime
+import           Data.Yaml
 import qualified Network.HTTP.Conduit as C
-import Prelude
+import           Prelude
 
 data EventList = EventList { eventListEvents :: [Event] }
 
@@ -28,13 +27,13 @@ instance FromJSON EventList where
     parseJSON (Object v) = EventList <$> v .: "results"
     parseJSON _ = mzero
 
-data Event = Event {
-    eventTitle       :: !T.Text
-  , eventDescription :: !T.Text
-  , eventVenue       :: Venue
-  , eventUrl         :: !T.Text
-  , eventZonedTime   :: ZonedTime
-}
+data Event = Event
+    { eventTitle       :: !T.Text
+    , eventDescription :: !T.Text
+    , eventVenue       :: Venue
+    , eventUrl         :: !T.Text
+    , eventZonedTime   :: ZonedTime
+    }
 
 instance FromJSON Event where
     parseJSON (Object v) =
@@ -42,23 +41,23 @@ instance FromJSON Event where
               <*> v.: "description"
               <*> v.: "venue"
               <*> v.: "event_url"
-              <*> liftM2 makeZonedTime (v .: "utc_offset") (v .: "time")
+              <*> liftM2 mkZonedTime (v .: "utc_offset") (v .: "time")
     parseJSON _ = mzero
 
-makeZonedTime :: Int -> Int -> ZonedTime
-makeZonedTime utcOffset posixTime =
+mkZonedTime :: Int -> Int -> ZonedTime
+mkZonedTime utcOffset posixTime =
     let
         timeZone = minutesToTimeZone (utcOffset `div` 1000 `div` 60)
         utcTime = posixSecondsToUTCTime $ realToFrac (posixTime `div` 1000)
     in
         utcToZonedTime timeZone utcTime
 
-data Venue = Venue {
-    venueName    :: !T.Text
-  , venueAddress :: !T.Text
-  , venueCity    :: !T.Text
-  , venueState   :: !T.Text
-}
+data Venue = Venue
+    { venueName    :: !T.Text
+    , venueAddress :: !T.Text
+    , venueCity    :: !T.Text
+    , venueState   :: !T.Text
+    }
 
 instance FromJSON Venue where
     parseJSON (Object v) =
@@ -78,7 +77,7 @@ fetchEvents meetupApiKey = do
             TL.unpack $ TF.format
                 "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}"
                 [TL.pack k]
-        fetch :: String -> IO (Maybe LBS.ByteString)
+        fetch :: String -> IO (Maybe BSL.ByteString)
         fetch url = fmap Just (C.simpleHttp url) `E.catch` (\(_ :: C.HttpException) -> return Nothing)
-        parseEventListJson :: LBS.ByteString -> Maybe [Event]
+        parseEventListJson :: BSL.ByteString -> Maybe [Event]
         parseEventListJson = fmap eventListEvents . A.decode
