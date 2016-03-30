@@ -1,13 +1,11 @@
 module Util.Formatting
-(
-    formatZonedTimeVerbose
-) where
+    ( formatZonedTimeVerbose
+    ) where
 
 import qualified Data.Time.Format as DTF
 import qualified Data.Time.LocalTime as LT
-import Prelude
+import           Prelude
 
 formatZonedTimeVerbose :: LT.ZonedTime -> String
-formatZonedTimeVerbose t =
-    DTF.formatTime DTF.defaultTimeLocale "at %H:%M UTC%z on %A %-d %B %Y" t
-
+formatZonedTimeVerbose =
+    DTF.formatTime DTF.defaultTimeLocale "at %H:%M UTC%z on %A %-d %B %Y"
