@@ -7,8 +7,5 @@
     <a href="#{meetupUrl}">
       Please visit Meetup.com for details for upcoming meetings
 <p>
-  <a href="https://seahug-pcph.eventbrite.com/">
-    Register for "Parallel and concurrent programming in Haskell" course
-<p>
   <a href="/content/pcph">
     Information for "Parallel and concurrent programming in Haskell" course
