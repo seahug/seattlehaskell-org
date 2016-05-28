@@ -1,7 +1,13 @@
 #!/bin/bash
-SCRIPTPATH=$(readlink -f $0)
-SCRIPTDIR=$(dirname $SCRIPTPATH)
-APPDIR=$(dirname $SCRIPTDIR)
+set -e
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  READLINK=greadlink
+else
+  READLINK=readlink
+fi
+THISPATH=$($READLINK -f $0)
+THISDIR=$(dirname $THISPATH)
+PROJECTDIR=$(dirname $THISDIR)
 
-cd $APPDIR
+cd $PROJECTDIR
 stack install yesod-bin cabal-install --install-ghc
