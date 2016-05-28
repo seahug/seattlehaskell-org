@@ -1,6 +1,7 @@
 module Handler.Home
     ( getAboutR
     , getHomeR
+    , getSlackR
     ) where
 
 import           Import
@@ -29,3 +30,8 @@ getAboutR = do
     defaultLayout $ do
         setTitle "SeaHUG - about"
         $(widgetFile "about")
+
+getSlackR :: Handler Html
+getSlackR = defaultLayout $ do
+    setTitle "SeaHUG - Slack sign-up"
+    $(widgetFile "slack")

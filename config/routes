@@ -6,3 +6,4 @@
 
 / HomeR GET
 /about AboutR GET
+/slack SlackR GET
