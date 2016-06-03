@@ -1,8 +1,14 @@
 #!/bin/bash
-SCRIPTPATH=$(readlink -f $0)
-SCRIPTDIR=$(dirname $SCRIPTPATH)
-APPDIR=$SCRIPTDIR
+set -e
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  READLINK=greadlink
+else
+  READLINK=readlink
+fi
+THISPATH=$($READLINK -f $0)
+THISDIR=$(dirname $THISPATH)
+PROJECTDIR=$THISDIR
 
 APPROOT=http://DOMAIN \
   MEETUP_API_KEY=MEETUP_API_KEY \
-  $APPDIR/script/devel
+  $PROJECTDIR/script/devel

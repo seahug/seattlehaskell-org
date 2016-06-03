@@ -1,9 +1,15 @@
 #!/bin/bash
-SCRIPTPATH=$(readlink -f $0)
-SCRIPTDIR=$(dirname $SCRIPTPATH)
-APPDIR=$SCRIPTDIR
+set -e
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  READLINK=greadlink
+else
+  READLINK=readlink
+fi
+THISPATH=$($READLINK -f $0)
+THISDIR=$(dirname $THISPATH)
+PROJECTDIR=$THISDIR
 
-$APPDIR/script/genconf \
+$PROJECTDIR/script/genconf \
   DOMAIN \
   PROXYPORT \
-  DOCROOT > $APPDIR/config/apache2.conf
+  DOCROOT > $PROJECTDIR/config/apache2.conf
