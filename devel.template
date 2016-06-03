@@ -10,5 +10,6 @@ THISDIR=$(dirname $THISPATH)
 PROJECTDIR=$THISDIR
 
 APPROOT=http://DOMAIN \
+  MEETUP_API_URL=https://api.meetup.com \
   MEETUP_API_KEY=MEETUP_API_KEY \
   $PROJECTDIR/script/devel

@@ -54,6 +54,8 @@ data AppSettings = AppSettings
     -- ^ Copyright text to appear in the footer of the page
     , appAnalytics              :: Maybe Text
     -- ^ Google Analytics code
+    , appMeetupApiUrl           :: String
+    -- ^ Meetup API URL
     , appMeetupApiKey           :: String
     -- ^ Meetup API key
     , appGitHubUrl              :: String
@@ -87,6 +89,7 @@ instance FromJSON AppSettings where
         appCopyright              <- o .: "copyright"
         appAnalytics              <- o .:? "analytics"
 
+        appMeetupApiUrl           <- o .: "meetup-api-url"
         appMeetupApiKey           <- o .: "meetup-api-key"
         appGitHubUrl              <- o .: "github-url"
         appMeetupUrl              <- o .: "meetup-url"

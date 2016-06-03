@@ -67,16 +67,16 @@ instance FromJSON Venue where
               <*> v .: "state"
     parseJSON _ = mzero
 
-fetchEvents :: String -> IO (Maybe [Event])
-fetchEvents meetupApiKey = do
-    maybeResponse <- fetch $ formatEventsUrl meetupApiKey
+fetchEvents :: String -> String -> IO (Maybe [Event])
+fetchEvents meetupApiUrl meetupApiKey = do
+    maybeResponse <- fetch formatEventsUrl
     return $ maybeResponse >>= parseEventListJson
     where
-        formatEventsUrl :: String -> String
-        formatEventsUrl k =
+        formatEventsUrl :: String
+        formatEventsUrl =
             TL.unpack $ TF.format
-                "https://api.meetup.com/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}"
-                [TL.pack k]
+                "{}/2/events?&sign=true&group_urlname=seahug&status=upcoming&page=1&key={}"
+                (map TL.pack [meetupApiUrl, meetupApiKey])
         fetch :: String -> IO (Maybe BSL.ByteString)
         fetch url = fmap Just (C.simpleHttp url) `E.catch` (\(_ :: C.HttpException) -> return Nothing)
         parseEventListJson :: BSL.ByteString -> Maybe [Event]

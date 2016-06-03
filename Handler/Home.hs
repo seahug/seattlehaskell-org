@@ -11,10 +11,11 @@ import qualified Util.Meetup as M
 getHomeR :: Handler Html
 getHomeR = do
     app <- getYesod
-    let meetupApiKey = appMeetupApiKey $ appSettings app
+    let meetupApiUrl = appMeetupApiUrl $ appSettings app
+        meetupApiKey = appMeetupApiKey $ appSettings app
         meetupUrl = appMeetupUrl $ appSettings app
     event <- liftIO $ do
-        events <- M.fetchEvents meetupApiKey
+        events <- M.fetchEvents meetupApiUrl meetupApiKey
         return $ fmap Prelude.head events
     defaultLayout $ do
         setTitle "SeaHUG"

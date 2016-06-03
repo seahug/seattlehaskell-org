@@ -1,2 +1,5 @@
 database:
   database: seattlehaskell-org_test.sqlite3
+
+meetup-api-url: "http://localhost:4000"
+meetup-api-key: "MEETUP-API-KEY"

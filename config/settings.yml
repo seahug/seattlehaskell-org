@@ -27,6 +27,7 @@ copyright: Seattle Area Haskell Users' Group
 
 # Do not store secrets directly in this file
 # Instead, store only empty "_env"-formatted values
+meetup-api-url: "_env:MEETUP_API_URL:"
 meetup-api-key: "_env:MEETUP_API_KEY:"
 
 github-url: https://github.com/seahug/seattlehaskell-org
