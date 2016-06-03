@@ -148,15 +148,21 @@ test-suite test
                       ViewPatterns
 
   build-depends:      base
+                    , bytestring
                     , classy-prelude
                     , classy-prelude-yesod
                     , hspec >= 2.0.0
+                    , http-types
                     , monad-logger
                     , persistent
                     , persistent-sqlite
                     , resourcet
                     , seattlehaskell-org
                     , shakespeare
+                    , stm
+                    , text
+                    , wai
+                    , warp
                     , yesod
                     , yesod-core
                     , yesod-test >= 1.4.3 && < 1.5
