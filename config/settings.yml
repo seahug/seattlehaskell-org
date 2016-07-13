@@ -32,4 +32,3 @@ meetup-api-key: "_env:MEETUP_API_KEY:"
 
 github-url: https://github.com/seahug/seattlehaskell-org
 meetup-url: http://www.meetup.com/seahug/
-
