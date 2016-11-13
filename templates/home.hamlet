@@ -7,10 +7,9 @@
     <a href="#{meetupUrl}">
       Please visit Meetup.com for details for upcoming meetings
 <h2>Archives
-<ul>
-  <li>
-    <a href="/content/ctp">
-      Course: Category Theory for Programmers
-  <li>
-    <a href="/content/pcph">
-      Course: Parallel and Concurrent Programming in Haskell
+<p>
+  <a href="/content/ctp">
+    Course: Category Theory for Programmers
+<p>
+  <a href="/content/pcph">
+    Course: Parallel and Concurrent Programming in Haskell
