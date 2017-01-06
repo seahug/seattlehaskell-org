@@ -48,7 +48,7 @@ data AppSettings = AppSettings
     -- ^ Perform no stylesheet/script combining
 
     -- Example app-specific configuration values.
-    , appCopyrightYear          :: Int
+    , appCopyrightYear          :: Text
     -- ^ Copyright year to appear in the footer of the page
     , appCopyright              :: Text
     -- ^ Copyright text to appear in the footer of the page
