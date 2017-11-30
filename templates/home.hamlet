@@ -6,19 +6,16 @@
   $nothing
     <a href="#{meetupUrl}">
       Please visit Meetup.com for details for upcoming meetings
-<p>
-  <a href="https://seahug-ctp2.eventbrite.com/">
-    Register for "Category theory for programmers (part 2)" course
-<p>
-  <a href="/content/ctp2">
-    Course: Category Theory for Programmers (part 2)
 <h2>Archives
 <p>
   <a href="https://seahug.github.io/seahug-minutes/">
     Agendas and minutes for monthly meetings
 <p>
   <a href="/content/ctp">
-    Course: Category Theory for Programmers
+    Course: Category Theory for Programmers (part 1)
+<p>
+  <a href="/content/ctp2">
+    Course: Category Theory for Programmers (part 2)
 <p>
   <a href="/content/pcph">
     Course: Parallel and Concurrent Programming in Haskell
