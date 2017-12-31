@@ -13,10 +13,15 @@ available][seahug-hakyll].
 $ stack build
 ```
 
+### Install runtime prerequisites
+
+```bash
+$ stack install yesod-bin cabal-install
+```
+
 ### Run development server
 
 ```bash
-$ stack install yesod-bin
 $ script/devel
 ```
 
