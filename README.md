@@ -16,6 +16,7 @@ $ stack build
 ### Run development server
 
 ```bash
+$ stack install yesod-bin
 $ script/devel
 ```
 
