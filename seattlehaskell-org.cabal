@@ -170,3 +170,5 @@ test-suite test
   other-modules:      Handler.CommonSpec
                     , Handler.HomeSpec
                     , TestImport
+                    , TestUtil.Event
+                    , TestUtil.TestServer
