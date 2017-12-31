@@ -10,7 +10,7 @@ available][seahug-hakyll].
 ### Build
 
 ```bash
-$ script/build
+$ stack build
 ```
 
 ### Run development server
