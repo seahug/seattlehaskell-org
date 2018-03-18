@@ -1,5 +1,7 @@
 # `seattlehaskell.org` web site
 
+**This version of the SeaHUG web site has now been decommissioned!**
+
 This is the [Yesod][yesod] source code for [seattlehaskell.org][seahug].
 
 Source code for the Hakyll portion of the web site is [also
